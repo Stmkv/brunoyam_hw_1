@@ -1,9 +1,8 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
+	"homework/internal/input"
 	"unicode"
 )
 
@@ -19,16 +18,16 @@ func main() {
 	}
 	for {
 		printMainMenu()
-		userMenuItem := reader()
+		userMenuItem := input.ReadLine()
 		if userMenuItem == "1" {
 			fmt.Println("Введите первую букву имени ")
-			userMenuInput := reader()
+			userMenuInput := input.ReadLine()
 			names := searchName(&fakeDb, userMenuInput)
 			fmt.Println(names)
 		}
 		if userMenuItem == "2" {
 			fmt.Println("Введите Новое имя ")
-			userMenuInput := reader()
+			userMenuInput := input.ReadLine()
 			addPerson(&fakeDb, userMenuInput)
 			fmt.Println(fakeDb)
 
@@ -37,13 +36,6 @@ func main() {
 			break
 		}
 	}
-}
-
-func reader() (text string) {
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	text = scanner.Text()
-	return
 }
 
 func printMainMenu() {

@@ -1,30 +1,20 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
-	"sort"
+	"homework/internal/input"
 	"strings"
 )
 
 func main() {
-	m := make([]string, 0)
-	sort.Strings(m)
-	userInput := reader()
+	userInput := input.ReadLine()
 	counter := make(map[string]int)
 	words := processString(userInput)
 	for _, v := range words {
 		counter[v]++
 	}
 	fmt.Println(counter)
-}
 
-func reader() (text string) {
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	text = scanner.Text()
-	return
 }
 
 func processString(text string) []string {
