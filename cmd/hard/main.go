@@ -14,7 +14,6 @@ func main() {
 		counter[v]++
 	}
 	fmt.Println(counter)
-
 }
 
 func processString(text string) []string {

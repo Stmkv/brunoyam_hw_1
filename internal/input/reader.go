@@ -5,9 +5,8 @@ import (
 	"os"
 )
 
-func ReadLine() (text string) {
+func ReadLine() string {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
-	text = scanner.Text()
-	return
+	return scanner.Text()
 }

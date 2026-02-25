@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	fakeDb := []string{
+	fakeDB := []string{
 		"Анна",
 		"Борис",
 		"Валентин",
@@ -22,15 +22,14 @@ func main() {
 		if userMenuItem == "1" {
 			fmt.Println("Введите первую букву имени ")
 			userMenuInput := input.ReadLine()
-			names := searchName(&fakeDb, userMenuInput)
+			names := searchName(&fakeDB, userMenuInput)
 			fmt.Println(names)
 		}
 		if userMenuItem == "2" {
 			fmt.Println("Введите Новое имя ")
 			userMenuInput := input.ReadLine()
-			addPerson(&fakeDb, userMenuInput)
-			fmt.Println(fakeDb)
-
+			addPerson(&fakeDB, userMenuInput)
+			fmt.Println(fakeDB)
 		}
 		if userMenuItem == "3" {
 			break
@@ -45,12 +44,12 @@ func printMainMenu() {
 3. Завершить работу `)
 }
 
-func searchName(fDb *[]string, firstLetterName string) []string {
+func searchName(fDB *[]string, firstLetterName string) []string {
 	userFirstLetterNameRune := []rune(firstLetterName)[0]
 	correctFirstLetterUser := unicode.ToLower(userFirstLetterNameRune)
 
 	var namesFound = make([]string, 0)
-	for _, name := range *fDb {
+	for _, name := range *fDB {
 		nameRune := unicode.ToLower([]rune(name)[0])
 		if nameRune == correctFirstLetterUser {
 			namesFound = append(namesFound, name)
@@ -59,6 +58,6 @@ func searchName(fDb *[]string, firstLetterName string) []string {
 	return namesFound
 }
 
-func addPerson(fDb *[]string, userName string) {
-	*fDb = append(*fDb, userName)
+func addPerson(fDB *[]string, userName string) {
+	*fDB = append(*fDB, userName)
 }
